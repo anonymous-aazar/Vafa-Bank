@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Portal - Vafa Bank</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <marquee>Vafa Bank</marquee>
+    </header>
+    
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+    <main class="container">
+        <h1>Customer Portal</h1>
+        <p>Welcome, <span id="customerName" class="text-bold text-primary"></span></p>
+        
+        <div class="section">
+            <h3>Account Summary</h3>
+            <p><strong>Account Number:</strong> <span id="summaryAccNum"></span></p>
+            <p><strong>Customer ID:</strong> <span id="summaryCustId"></span></p>
+            <p><strong>Current Balance:</strong> ₹<span id="summaryBalance"></span></p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'transferMoney')">Transfer Money</button>
+            <button class="tab-link" onclick="openTab(event, 'passbook')">Digi Passbook</button>
+        </div>
+
+        <div id="transferMoney" class="tab-content active">
+            <h3>Transfer Money</h3>
+            <form id="customerTransferForm">
+                <div class="form-group">
+                    <label>Your Account Number (From)</label>
+                    <input type="text" id="custTransferFromAcc" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="custTransferToAcc">Receiver's Account Number</label>
+                    <input type="number" id="custTransferToAcc" required>
+                </div>
+                <div class="form-group">
+                    <label for="custTransferAmount">Amount (₹)</label>
+                    <input type="number" id="custTransferAmount" min="1" required>
+                </div>
+                 <div class="form-group">
+                    <label for="custTransferType">Transfer Type</label>
+                    <select id="custTransferType" required>
+                        <option value="NEFT">NEFT</option>
+                        <option value="IMPS">IMPS</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Transfer Now</button>
+            </form>
+        </div>
+
+        <div id="passbook" class="tab-content">
+            <h3>Digi Passbook</h3>
+            <table id="passbookTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Deposit</th>
+                        <th>Withdrawal</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

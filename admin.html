@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Vafa Bank</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <marquee>Vafa Bank</marquee>
+    </header>
+    
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+    <main class="container">
+        <h1>Admin Dashboard</h1>
+
+        <section class="section">
+            <h2>Create New Employee Account</h2>
+            <form id="createEmployeeForm">
+                <div class="form-group">
+                    <label for="empFullName">Full Name</label>
+                    <input type="text" id="empFullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="empDob">Date of Birth</label>
+                    <input type="date" id="empDob" required>
+                </div>
+                <div class="form-group">
+                    <label for="empEmail">Email</label>
+                    <input type="email" id="empEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="empUserId">UserID</label>
+                    <input type="text" id="empUserId" required>
+                </div>
+                <button type="submit" class="btn">Create Employee</button>
+            </form>
+        </section>
+
+        <section class="section">
+            <h2>Manage All Employee Accounts</h2>
+            <table id="employeeListTable">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>UserID</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Approve New Customers</h2>
+            <table id="pendingCustomersTable">
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Full Name</th>
+                        <th>Account Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Portal - Vafa Bank</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <marquee>Vafa Bank</marquee>
+    </header>
+    
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+    <main class="container">
+        <h1>Employee Portal</h1>
+        <p>Welcome, <span id="employeeName" class="text-bold text-primary"></span>!</p>
+
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'openAccount')">Open Account</button>
+            <button class="tab-link" onclick="openTab(event, 'updateAccount')">Update Details</button>
+            <button class="tab-link" onclick="openTab(event, 'transaction')">Transaction</button>
+            <button class="tab-link" onclick="openTab(event, 'closeAccount')">Close Account</button>
+        </div>
+
+        <div id="openAccount" class="tab-content active">
+            <h3>Open New Customer Account</h3>
+            <form id="openAccountForm">
+                <h4>Personal Details</h4>
+                <div class="form-group">
+                    <label for="custFullName">Full Name</label>
+                    <input type="text" id="custFullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="custAddress">Address</label>
+                    <textarea id="custAddress" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="custDob">Date of Birth</label>
+                    <input type="date" id="custDob" required>
+                </div>
+                <div class="form-group">
+                    <label for="custMaritalStatus">Marital Status</label>
+                    <select id="custMaritalStatus" required>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="custEmail">Email ID</label>
+                    <input type="email" id="custEmail" required>
+                </div>
+                 <div class="form-group">
+                    <label for="custMobile">Mobile Number</label>
+                    <input type="tel" id="custMobile" required>
+                </div>
+                <div class="form-group">
+                    <label for="custTelephone">Telephone Number (Optional)</label>
+                    <input type="tel" id="custTelephone">
+                </div>
+                 <div class="form-group">
+                    <label for="custNominee">Nominee</label>
+                    <input type="text" id="custNominee" required>
+                </div>
+                
+                <h4>Account Details</h4>
+                <div class="form-group">
+                    <label for="custCurrency">Currency</label>
+                    <select id="custCurrency" required>
+                        <option value="INR">INR</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="custAccountType">Account Type</label>
+                    <select id="custAccountType" required>
+                        <option value="Savings">Savings</option>
+                        <option value="Current">Current</option>
+                        <option value="Salary">Salary</option>
+                        <option value="NRI">NRI</option>
+                    </select>
+                </div>
+                <div class="form-group hidden" id="overseasAddressGroup">
+                    <label for="custOverseasAddress">Overseas Address</label>
+                    <textarea id="custOverseasAddress"></textarea>
+                </div>
+
+                <div id="conditionalFields"></div>
+
+                <h4>Bank Details</h4>
+                <div class="form-group">
+                    <label>IFSC Code</label>
+                    <input type="text" value="VBKK0000010" readonly>
+                </div>
+
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+        </div>
+
+        <div id="updateAccount" class="tab-content">
+            <h3>Update Account Details</h3>
+            <form id="findAccountToUpdateForm">
+                 <div class="form-group">
+                    <label for="updateAccNum">Enter Account Number to Update</label>
+                    <input type="number" id="updateAccNum" required>
+                </div>
+                <button type="submit" class="btn">Find Account</button>
+            </form>
+            <div id="updateDetailsSection" class="hidden section">
+                <h4>Update details for <span id="updateCustName" class="text-primary"></span></h4>
+                <form id="updateAccountForm">
+                    <div class="form-group">
+                        <label for="updateAddress">Address</label>
+                        <textarea id="updateAddress"></textarea>
+                    </div>
+                     <div class="form-group">
+                        <label for="updateMaritalStatus">Marital Status</label>
+                        <select id="updateMaritalStatus">
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="updateMobile">Mobile Number</label>
+                        <input type="tel" id="updateMobile">
+                    </div>
+                    <button type="submit" class="btn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="transaction" class="tab-content">
+            <h3>Perform a Transaction</h3>
+             <form id="findAccountForTxnForm">
+                 <div class="form-group">
+                    <label for="txnAccNum">Enter Account Number</label>
+                    <input type="number" id="txnAccNum" required>
+                </div>
+                <button type="submit" class="btn">Find Account</button>
+            </form>
+
+            <div id="transactionOptions" class="hidden section">
+                <h4>Transaction options for <span id="txnCustName" class="text-primary"></span></h4>
+                <div class="section">
+                    <h5>Deposit</h5>
+                    <form id="depositForm">
+                        <div class="form-group"><label for="depositDate">Date</label><input type="date" id="depositDate" required></div>
+                        <div class="form-group"><label for="depositDesc">Description</label><input type="text" id="depositDesc" required></div>
+                        <div class="form-group"><label for="depositAmount">Amount</label><input type="number" id="depositAmount" min="1" required></div>
+                        <div class="form-group"><label for="depositType">Deposit Type</label><select id="depositType" required><option>Cheque</option><option>DD</option><option>Deposit Slip</option></select></div>
+                        <button type="submit" class="btn">Deposit</button>
+                    </form>
+                </div>
+                <div class="section">
+                    <h5>Withdraw</h5>
+                    <form id="withdrawForm">
+                        <div class="form-group"><label for="withdrawDate">Date</label><input type="date" id="withdrawDate" required></div>
+                        <div class="form-group"><label for="withdrawDesc">Description</label><input type="text" id="withdrawDesc" required></div>
+                        <div class="form-group"><label for="withdrawAmount">Amount</label><input type="number" id="withdrawAmount" min="1" required></div>
+                        <div class="form-group"><label for="withdrawType">Withdrawal Type</label><select id="withdrawType" required><option>Cheque</option><option>DD</option><option>Withdrawal Slip</option></select></div>
+                        <button type="submit" class="btn">Withdraw</button>
+                    </form>
+                </div>
+                 <div class="section">
+                    <h5>Transfer</h5>
+                    <form id="transferForm">
+                        <div class="form-group"><label>From Account Number</label><input type="text" id="transferFromAcc" readonly></div>
+                        <div class="form-group"><label for="transferToAcc">To Account Number</label><input type="number" id="transferToAcc" required></div>
+                        <p>Receiver: <span id="receiverName" class="text-bold"></span></p>
+                        <div class="form-group"><label for="transferAmount">Amount</label><input type="number" id="transferAmount" min="1" required></div>
+                        <div class="form-group"><label for="transferType">Transfer Type</label><select id="transferType" required><option>Cheque</option><option>NEFT</option><option>IMPS</option></select></div>
+                        <button type="submit" class="btn">Transfer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="closeAccount" class="tab-content">
+            <h3>Close Customer Account</h3>
+            <form id="closeAccountForm">
+                <div class="form-group">
+                    <label for="closeAccNum">Account Number</label>
+                    <input type="number" id="closeAccNum" required>
+                </div>
+                <div class="form-group">
+                    <label for="closeCustId">Customer ID</label>
+                    <input type="text" id="closeCustId" required>
+                </div>
+                <div class="form-group">
+                    <label for="closeReason">Reason for Closing</label>
+                    <textarea id="closeReason" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn">Close Account</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

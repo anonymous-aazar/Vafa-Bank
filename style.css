@@ -1,0 +1,235 @@
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* --- CSS Variables for Theme --- */
+:root {
+    --primary-color: rgb(0, 144, 255);
+    --secondary-color: #f0f8ff;
+    --text-color: #333;
+    --border-color: #ddd;
+    --white-color: #fff;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- General Styling --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Header & Marquee --- */
+header {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 5px 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* --- Main Container --- */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+/* --- Login Page Specific --- */
+.login-container {
+    max-width: 450px;
+    margin-top: 5rem;
+}
+
+/* --- Section Styling --- */
+.section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #fafcff;
+}
+
+.section h2, .section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+/* --- Form Elements --- */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 144, 255, 0.5);
+}
+
+/* --- Button Styling --- */
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: rgb(0, 120, 215);
+    transform: translateY(-2px);
+}
+
+/* --- Navigation Tabs --- */
+.tabs {
+    display: flex;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-link {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-link.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* --- Table Styling --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+table th {
+    background-color: var(--secondary-color);
+    font-weight: 600;
+}
+
+table tr:hover {
+    background-color: #f1f5f9;
+}
+
+table .btn {
+    width: auto;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+/* --- Logout Button --- */
+.logout-btn {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    padding: 8px 15px;
+    background: var(--white-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+    .logout-btn {
+        position: relative;
+        display: block;
+        top: 0;
+        right: 0;
+        margin: 1rem auto;
+    }
+}
+
+/* --- Helper Classes --- */
+.hidden {
+    display: none;
+}
+
+.text-bold {
+    font-weight: 600;
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
